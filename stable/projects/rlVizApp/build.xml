@@ -1,0 +1,42 @@
+<project name="RLVizApp" basedir="." >
+
+	<property name="baseLibraryDir" value="../.."/>
+	<!-- Things required for build-common.xml -->
+	<property name="main.project.name" value="${ant.project.name}"/>
+	<property name="main.package.name" value="btViz/"/>
+	<property name="main.package.spec.version" value="1.0"/>
+	<property name="main.vendor.name" value="Brian Tanner"/>
+	<property name="rl.viz.system.directory" value="${baseLibraryDir}/system"/>
+	<import file="${rl.viz.system.directory}/build-common.xml"/>
+
+
+	<property name="privateLib.dir"     value="libs"/>
+
+<path id="project.extra.classpath">
+	<fileset dir="${privateLib.dir}" >
+	    <include name="forms-1.1.0.jar"/>
+	</fileset>
+	<fileset dir="${dist.dir}" >
+	    <include name="EnvironmentShell.jar"/>
+	    <include name="AgentShell.jar"/>
+	</fileset>
+</path>
+
+
+    <target name="clean" depends="rl-clean" />
+    <target name="compile" depends="rl-compile" />
+
+	<target name="jar" depends="compile">
+		<unjar dest="${classes.dir}">
+			<fileset dir="${privateLib.dir}" >
+			    <include name="forms-1.1.0.jar"/>
+			</fileset>
+		</unjar>
+		<antcall target="rl-jar" />
+	</target>
+
+   <target name="clean-build" depends="clean,jar"/>
+
+<target name="test" depends="rl-test-html"/>
+</project>
+
