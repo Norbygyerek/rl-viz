@@ -18,7 +18,6 @@ http://brian.tannerpages.com
 
 package environmentShell;
 
-
 import rlVizLib.dynamicLoading.DynamicLoaderInterface;
 import rlVizLib.general.ParameterHolder;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;

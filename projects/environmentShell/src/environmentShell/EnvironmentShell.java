@@ -130,7 +130,6 @@ public class EnvironmentShell implements EnvironmentInterface, Unloadable {
     }
 
     public String env_message(String theMessage) {
-
         GenericMessage theGenericMessage;
         try {
             theGenericMessage = new GenericMessage(theMessage);
