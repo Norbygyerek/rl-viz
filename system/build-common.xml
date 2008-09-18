@@ -21,7 +21,7 @@ We'll try and rely on minimal variables from above.
 <property name="test.classes.dir" value="${build.dir}/testclasses"/>
 
 <property name="junit.jar" value="${rlviz.libs.dir}/junit.jar" />
-<property name="rlgluecodec.jar" value="${rlviz.libs.dir}/JavaRLGlueCodec.jar" />
+<property name="rlgluecodec.jar" value="${rlviz.libs.dir}/RLGlueCodec/JavaRLGlueCodec.jar" />
 
 <property name="test.reports"   value="reports"/>
 <property name="test.raw"   value="reports/raw"/>
