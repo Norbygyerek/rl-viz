@@ -19,12 +19,12 @@ http://brian.tannerpages.com
   
 package rlVizLib.glueProxy;
 
-import rlglue.agent.Agent;
-import rlglue.environment.Environment;
-import rlglue.types.Observation_action;
-import rlglue.types.Random_seed_key;
-import rlglue.types.Reward_observation_action_terminal;
-import rlglue.types.State_key;
+import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
+import org.rlcommunity.rlglue.codec.types.Observation_action;
+import org.rlcommunity.rlglue.codec.types.Random_seed_key;
+import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
+import org.rlcommunity.rlglue.codec.types.State_key;
 
 public class RLGlueProxy{
 	private static RLGlueProxyInterface instance = null;
@@ -67,7 +67,7 @@ public class RLGlueProxy{
 		netGlue=true;
 		instance = new RegularNetGlue();
 	}
-	public static void useLocalGlue(Environment E,Agent A){
+	public static void useLocalGlue(EnvironmentInterface E,AgentInterface A){
 		if(instance != null) {
 			System.err.println("Someone tried to set the glue proxy to LOCAL but its already set!");
 			Thread.dumpStack();

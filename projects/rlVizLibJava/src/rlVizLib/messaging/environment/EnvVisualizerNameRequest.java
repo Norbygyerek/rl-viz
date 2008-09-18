@@ -27,7 +27,7 @@ import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.messaging.interfaces.HasAVisualizerInterface;
-import rlglue.environment.Environment;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
 public class EnvVisualizerNameRequest extends EnvironmentMessages{
 
@@ -56,7 +56,7 @@ public class EnvVisualizerNameRequest extends EnvironmentMessages{
 	}
 
 	@Override
-	public String handleAutomatically(Environment theEnvironment) {
+	public String handleAutomatically(EnvironmentInterface theEnvironment) {
 		HasAVisualizerInterface castedEnv = (HasAVisualizerInterface)theEnvironment;
 		EnvVisualizerNameResponse theResponse=new EnvVisualizerNameResponse(castedEnv.getVisualizerClassName());
 		return theResponse.makeStringResponse();

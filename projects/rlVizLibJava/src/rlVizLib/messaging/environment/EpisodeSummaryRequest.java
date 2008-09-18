@@ -31,7 +31,7 @@ import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.messaging.interfaces.ProvidesEpisodeSummariesInterface;
-import rlglue.environment.Environment;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
 /**
  * This is a message (with submessages) to get a string representation of an episode summary.
@@ -129,7 +129,7 @@ public class EpisodeSummaryRequest extends EnvironmentMessages {
     }
 
     @Override
-    public String handleAutomatically(Environment theEnvironment) {
+    public String handleAutomatically(EnvironmentInterface theEnvironment) {
         ProvidesEpisodeSummariesInterface castedEnv = (ProvidesEpisodeSummariesInterface) theEnvironment;
 
         String theLogString = castedEnv.getEpisodeSummary(theStartCharacter, theChunkSize);

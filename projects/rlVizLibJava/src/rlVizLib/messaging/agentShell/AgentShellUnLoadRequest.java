@@ -26,7 +26,6 @@ import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
-import rlglue.RLGlue;
 
 public class AgentShellUnLoadRequest extends AgentShellMessages{
 	public AgentShellUnLoadRequest(GenericMessage theMessageObject) {

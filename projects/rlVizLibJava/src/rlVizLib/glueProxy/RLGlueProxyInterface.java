@@ -19,10 +19,10 @@ http://brian.tannerpages.com
   
 package rlVizLib.glueProxy;
 
-import rlglue.types.Observation_action;
-import rlglue.types.Random_seed_key;
-import rlglue.types.Reward_observation_action_terminal;
-import rlglue.types.State_key;
+import org.rlcommunity.rlglue.codec.types.Observation_action;
+import org.rlcommunity.rlglue.codec.types.Random_seed_key;
+import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
+import org.rlcommunity.rlglue.codec.types.State_key;
 
 public interface RLGlueProxyInterface {
 	public   void RL_init();

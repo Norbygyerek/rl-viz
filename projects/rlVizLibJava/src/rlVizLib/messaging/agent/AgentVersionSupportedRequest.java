@@ -28,7 +28,7 @@ import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.rlVizCore;
-import rlglue.agent.Agent;
+import org.rlcommunity.rlglue.codec.AgentInterface;
 
 
 public class AgentVersionSupportedRequest extends AgentMessages{
@@ -58,7 +58,7 @@ public class AgentVersionSupportedRequest extends AgentMessages{
 	}
 
 	@Override
-	public String handleAutomatically(Agent theAgent) {
+	public String handleAutomatically(AgentInterface theAgent) {
                 RLVizVersion theVersion=rlVizCore.getRLVizSpecVersionOfClassWhenCompiled(theAgent.getClass());
 		AgentVersionSupportedResponse theResponse=new AgentVersionSupportedResponse(theVersion);
 		return theResponse.makeStringResponse();

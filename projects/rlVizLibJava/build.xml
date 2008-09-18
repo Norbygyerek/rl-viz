@@ -24,14 +24,14 @@
 
     <target name="clean" depends="rl-clean" />
     
-<!-- Not using rl-compile in build-common.xml because we need RL-Glue.jar -->
+<!-- Not using rl-compile in build-common.xml because we need rlgluecodec.jar -->
     <target name="compile"  depends="set-debug">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="rlglue.classpath" debug="${build.debug}" deprecation="${build.deprecation}"/> 
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="rlgluecodec.classpath" debug="${build.debug}" deprecation="${build.deprecation}"/> 
     </target>
 
     <target name="jar" depends="compile,get.svn.version" >
-        <unjar src="${rlglue.jar}" dest="${classes.dir}" />
+        <unjar src="${rlgluecodec.jar}" dest="${classes.dir}" />
         <mkdir dir="${dist.dir}" />
         <jar destfile="${result.jar}" basedir="${classes.dir}" >
             <manifest>

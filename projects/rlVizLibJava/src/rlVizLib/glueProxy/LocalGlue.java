@@ -19,19 +19,19 @@ http://brian.tannerpages.com
   
 package rlVizLib.glueProxy;
 
-import rlglue.agent.Agent;
-import rlglue.environment.Environment;
-import rlglue.types.Action;
-import rlglue.types.Observation;
-import rlglue.types.Observation_action;
-import rlglue.types.Random_seed_key;
-import rlglue.types.Reward_observation;
-import rlglue.types.Reward_observation_action_terminal;
-import rlglue.types.State_key;
+import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
+import org.rlcommunity.rlglue.codec.types.Action;
+import org.rlcommunity.rlglue.codec.types.Observation;
+import org.rlcommunity.rlglue.codec.types.Observation_action;
+import org.rlcommunity.rlglue.codec.types.Random_seed_key;
+import org.rlcommunity.rlglue.codec.types.Reward_observation;
+import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
+import org.rlcommunity.rlglue.codec.types.State_key;
 
 public class LocalGlue implements RLGlueProxyInterface {
-	Environment E=null;
-	Agent A=null;
+	EnvironmentInterface E=null;
+	AgentInterface A=null;
 
 	Action lastAction=null;
 
@@ -40,7 +40,7 @@ public class LocalGlue implements RLGlueProxyInterface {
 	double totalReward=0.0d;
 	int totalEpisodes=0;
 	
-	public LocalGlue(Environment E, Agent A){
+	public LocalGlue(EnvironmentInterface E, AgentInterface A){
 		this.E=E;
 		this.A=A;
 	}
@@ -104,8 +104,12 @@ public class LocalGlue implements RLGlueProxyInterface {
 		}
 	}
 
+        /**
+         * @deprecated
+         */
 	public synchronized void RL_freeze() { 
-            A.agent_freeze();
+            System.err.println("RL_FREEZE is deprecated");
+            Thread.dumpStack();
 	}
 
 	public synchronized Random_seed_key RL_get_random_seed() {

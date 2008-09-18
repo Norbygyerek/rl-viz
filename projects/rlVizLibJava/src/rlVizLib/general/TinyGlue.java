@@ -20,10 +20,10 @@ http://brian.tannerpages.com
 package rlVizLib.general;
 
 import rlVizLib.glueProxy.RLGlueProxy;
-import rlglue.types.Action;
-import rlglue.types.Observation;
-import rlglue.types.Observation_action;
-import rlglue.types.Reward_observation_action_terminal;
+import org.rlcommunity.rlglue.codec.types.Action;
+import org.rlcommunity.rlglue.codec.types.Observation;
+import org.rlcommunity.rlglue.codec.types.Observation_action;
+import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
 
 /*
  * TinyGlue has the distinct priviledge of calling RL_start() and RL_stop().  We can count on TinyGlue to tell us when certain things are new

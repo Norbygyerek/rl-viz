@@ -31,8 +31,8 @@ import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.messaging.interfaces.getEnvObsForStateInterface;
 import rlVizLib.utilities.UtilityShop;
-import rlglue.environment.Environment;
-import rlglue.types.Observation;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
+import org.rlcommunity.rlglue.codec.types.Observation;
 
 public class EnvObsForStateRequest extends EnvironmentMessages{
 	Vector<Observation> theRequestStates=new Vector<Observation>();
@@ -102,7 +102,7 @@ public class EnvObsForStateRequest extends EnvironmentMessages{
 	}
 
 	@Override
-	public String handleAutomatically(Environment theEnvironment) {
+	public String handleAutomatically(EnvironmentInterface theEnvironment) {
 		Vector<Observation> theObservations= new Vector<Observation>();
 		getEnvObsForStateInterface castedEnv=(getEnvObsForStateInterface)theEnvironment;
 		

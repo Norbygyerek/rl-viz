@@ -30,9 +30,8 @@ import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.utilities.UtilityShop;
 import rlVizLib.visualization.QueryableAgent;
-import rlglue.RLGlue;
-import rlglue.agent.Agent;
-import rlglue.types.Observation;
+import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.types.Observation;
 /**
  * This mostly by the {@URL ValueFunctionVizComponent}, this message sends a vector
  * of observations to the agent and receives in return a vector of values.
@@ -108,7 +107,7 @@ public class AgentValueForObsRequest extends AgentMessages {
     }
 
     @Override
-    public String handleAutomatically(Agent theAgent) {
+    public String handleAutomatically(AgentInterface theAgent) {
         QueryableAgent castedAgent = (QueryableAgent) theAgent;
 
         Vector<Double> theValues = new Vector<Double>();

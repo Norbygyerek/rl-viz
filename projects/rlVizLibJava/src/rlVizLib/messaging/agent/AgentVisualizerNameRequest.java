@@ -27,7 +27,7 @@ import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.messaging.interfaces.HasAVisualizerInterface;
-import rlglue.agent.Agent;
+import org.rlcommunity.rlglue.codec.AgentInterface;
 
 public class AgentVisualizerNameRequest extends AgentMessages{
 
@@ -56,7 +56,7 @@ public class AgentVisualizerNameRequest extends AgentMessages{
 	}
 
 	@Override
-	public String handleAutomatically(Agent theAgent) {
+	public String handleAutomatically(AgentInterface theAgent) {
 		HasAVisualizerInterface castedAgent = (HasAVisualizerInterface)theAgent;
 		AgentVisualizerNameResponse theResponse=new AgentVisualizerNameResponse(castedAgent.getVisualizerClassName());
 		return theResponse.makeStringResponse();

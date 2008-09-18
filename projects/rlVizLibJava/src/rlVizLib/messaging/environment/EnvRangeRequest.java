@@ -28,7 +28,7 @@ import rlVizLib.messaging.MessageUser;
 import rlVizLib.messaging.MessageValueType;
 import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.messaging.interfaces.getEnvMaxMinsInterface;
-import rlglue.environment.Environment;
+import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
 public class EnvRangeRequest extends EnvironmentMessages{
 
@@ -64,7 +64,7 @@ public class EnvRangeRequest extends EnvironmentMessages{
 	}
 
 	@Override
-	public String handleAutomatically(Environment theEnvironment) {
+	public String handleAutomatically(EnvironmentInterface theEnvironment) {
 		
 		getEnvMaxMinsInterface castedEnv = (getEnvMaxMinsInterface)theEnvironment;
 		//			//Handle a request for the ranges
