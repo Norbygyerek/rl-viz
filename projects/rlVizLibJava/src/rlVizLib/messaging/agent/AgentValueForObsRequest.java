@@ -22,7 +22,6 @@ package rlVizLib.messaging.agent;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import rlVizLib.glueProxy.RLGlueProxy;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -31,6 +30,7 @@ import rlVizLib.messaging.NotAnRLVizMessageException;
 import rlVizLib.utilities.UtilityShop;
 import rlVizLib.visualization.QueryableAgent;
 import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import org.rlcommunity.rlglue.codec.types.Observation;
 /**
  * This mostly by the {@URL ValueFunctionVizComponent}, this message sends a vector
@@ -77,7 +77,7 @@ public class AgentValueForObsRequest extends AgentMessages {
                 MessageValueType.kStringList.id(),
                 thePayLoadBuffer.toString());
 
-        String responseMessage = RLGlueProxy.RL_agent_message(theRequest);
+        String responseMessage = RLGlue.RL_agent_message(theRequest);
 
         AgentValueForObsResponse theResponse;
         try {

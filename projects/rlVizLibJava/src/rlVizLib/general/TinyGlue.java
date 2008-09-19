@@ -19,7 +19,7 @@ http://brian.tannerpages.com
   
 package rlVizLib.general;
 
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import org.rlcommunity.rlglue.codec.types.Action;
 import org.rlcommunity.rlglue.codec.types.Observation;
 import org.rlcommunity.rlglue.codec.types.Observation_action;
@@ -45,13 +45,12 @@ public class TinyGlue{
 	
 	//returns true of the episode is over
 	synchronized public boolean  step(){
+		if(!RLGlue.isInited())
+                    RLGlue.RL_init();
 
-		if(!RLGlueProxy.isInited())
-                    RLGlueProxy.RL_init();
 
-
-		if(RLGlueProxy.isCurrentEpisodeOver()){
-			Observation_action firstAO=RLGlueProxy.RL_start();
+		if(RLGlue.isCurrentEpisodeOver()){
+			Observation_action firstAO=RLGlue.RL_start();
 			lastObservation=firstAO.o;
 			lastAction=firstAO.a;
 			lastReward=Double.NaN;
@@ -64,7 +63,7 @@ public class TinyGlue{
 			totalSteps++;
 			timeStep++;
                    
-			Reward_observation_action_terminal whatHappened=RLGlueProxy.RL_step();
+			Reward_observation_action_terminal whatHappened=RLGlue.RL_step();
 			lastObservation=whatHappened.o;
 			lastAction=whatHappened.a;
 			lastReward=whatHappened.r;
@@ -73,7 +72,7 @@ public class TinyGlue{
                         totalReturn+=lastReward;
 
 		}
-		return RLGlueProxy.isCurrentEpisodeOver();
+		return RLGlue.isCurrentEpisodeOver();
 	}
 
 	synchronized public int getEpisodeNumber() {

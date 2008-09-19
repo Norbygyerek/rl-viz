@@ -20,7 +20,7 @@ http://brian.tannerpages.com
 package rlVizLib.messaging.environmentShell;
 
 
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -43,7 +43,7 @@ public class EnvShellUnLoadRequest extends EnvironmentShellMessages{
 				MessageValueType.kNone.id(),
 				"NULL");
 
-		String responseMessage=RLGlueProxy.RL_env_message(theRequestString);
+		String responseMessage=RLGlue.RL_env_message(theRequestString);
 
 		EnvShellUnLoadResponse theResponse;
 		try {

@@ -64,7 +64,7 @@
     
     <target name="run-test" depends="compile-tests,jar">
 		<mkdir dir="${test.raw}" />
-       <junit printsummary="withOutAndErr" showoutput="yes" >
+       <junit printsummary="withOutAndErr" haltonfailure="no" showoutput="yes" maxmemory="1024M">
             <classpath>
                 <path refid="junit.classpath" /> 
 				<path refid="result.jar.classpath" />
@@ -73,7 +73,7 @@
             </classpath>
             
             <batchtest fork="yes" todir="${test.raw}">
-                <formatter type="xml"/> 
+	                <formatter type="xml"/> 
                 <fileset dir="${test.dir}" includes="**/*Test.java"/>
             </batchtest>
         </junit>

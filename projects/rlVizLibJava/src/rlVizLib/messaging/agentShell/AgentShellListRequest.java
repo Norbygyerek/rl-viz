@@ -19,7 +19,7 @@ http://brian.tannerpages.com
   
 package rlVizLib.messaging.agentShell;
 
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -46,7 +46,7 @@ public class AgentShellListRequest extends AgentShellMessages{
 	public static AgentShellListResponse Execute(){
 
                 String theRequest=makeRequest();
-		String responseMessage=RLGlueProxy.RL_agent_message(theRequest);
+		String responseMessage=RLGlue.RL_agent_message(theRequest);
 		
 		AgentShellListResponse theResponse;
 		try {

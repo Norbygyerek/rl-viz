@@ -20,7 +20,7 @@ http://brian.tannerpages.com
 package rlVizLib.messaging.environment;
 
 
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -43,7 +43,7 @@ public class EnvVisualizerNameRequest extends EnvironmentMessages{
 				MessageValueType.kNone.id(),
 				"NULL");
 
-		String responseMessage=RLGlueProxy.RL_env_message(theRequest);
+		String responseMessage=RLGlue.RL_env_message(theRequest);
 
 		EnvVisualizerNameResponse theResponse;
 		try {

@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -82,7 +82,7 @@ public class EpisodeSummaryRequest extends EnvironmentMessages {
         EpisodeSummaryChunkResponse theChunk = null;
         try {
             String theRequest = makeRequest(startChar, theChunkSize);
-            String responseMessage = RLGlueProxy.RL_env_message(theRequest);
+            String responseMessage = RLGlue.RL_env_message(theRequest);
 
             theChunk = new EpisodeSummaryChunkResponse(responseMessage);
         } catch (NotAnRLVizMessageException ex) {

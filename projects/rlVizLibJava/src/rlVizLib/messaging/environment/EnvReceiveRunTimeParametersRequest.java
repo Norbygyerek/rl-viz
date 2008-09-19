@@ -21,7 +21,7 @@ package rlVizLib.messaging.environment;
 
 
 import rlVizLib.general.ParameterHolder;
-import rlVizLib.glueProxy.RLGlueProxy;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import rlVizLib.messaging.AbstractMessage;
 import rlVizLib.messaging.GenericMessage;
 import rlVizLib.messaging.MessageUser;
@@ -50,7 +50,7 @@ public EnvReceiveRunTimeParametersRequest(GenericMessage theMessageObject){
 				MessageValueType.kNone.id(),
 				serializedParameters);
 
-		String responseMessage=RLGlueProxy.RL_env_message(theRequest);
+		String responseMessage=RLGlue.RL_env_message(theRequest);
 
 		EnvReceiveRunTimeParametersResponse theResponse;
 		try {
