@@ -1,0 +1,75 @@
+/*
+Copyright 2007 Brian Tanner
+brian@tannerpages.com
+http://brian.tannerpages.com
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+
+package org.rlcommunity.rlviz.agentshell;
+
+import java.lang.reflect.Method;
+import rlVizLib.dynamicLoading.EnvOrAgentType;
+import rlVizLib.dynamicLoading.LocalJarAgentEnvironmentLoader;
+import rlVizLib.general.ParameterHolder;
+import org.rlcommunity.rlglue.codec.AgentInterface;
+import rlVizLib.messaging.agentShell.TaskSpecResponsePayload;
+
+public class LocalJarAgentLoader extends LocalJarAgentEnvironmentLoader implements AgentLoaderInterface{
+
+    public LocalJarAgentLoader() {
+        super(AgentShellPreferences.getInstance().getList(),EnvOrAgentType.kAgent);
+    }
+
+
+    public AgentInterface loadAgent(String requestedName, ParameterHolder theParams) {
+        Object theAgentObject=load(requestedName, theParams);
+        if(theAgentObject!=null)return (AgentInterface)theAgentObject;
+        return null;
+    }
+
+    public TaskSpecResponsePayload loadTaskSpecCompat(String localName, ParameterHolder theParams, String TaskSpec) {
+        if (theClasses == null) {
+            makeList();
+        }
+
+        String fullName = getFullClassNameFromShortName(localName);
+        //Get the file from the list
+        for (Class<?> theClass : theClasses) {
+            if (theClass.getName().equals(fullName)) {
+                //this is the right one load it
+                return loadTaskSpecCompatFromClass(theClass, theParams,TaskSpec);
+            }
+        }
+        return null;
+    }
+
+    private TaskSpecResponsePayload loadTaskSpecCompatFromClass(Class<?> theClass, ParameterHolder theParams,String theTaskSpec) {
+        TaskSpecResponsePayload theTSP = null;
+
+        Class<?>[] paramHolderParams = new Class<?>[]{theParams.getClass(),String.class};
+
+        try {
+            Method TaskSpecPayloadMakerMethod = theClass.getDeclaredMethod("isCompatible", paramHolderParams);
+            if (TaskSpecPayloadMakerMethod != null) {
+                theTSP = (TaskSpecResponsePayload) TaskSpecPayloadMakerMethod.invoke((Object[]) null, new Object[]{theParams, theTaskSpec});
+            }
+        } catch (Exception e) {
+            return TaskSpecResponsePayload.makeUnsupportedPayload();
+        }
+
+        return theTSP;
+    }
+
+
+}
